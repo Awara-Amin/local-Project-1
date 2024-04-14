@@ -1,0 +1,37 @@
+:host ::ng-deep .p-cellEditor {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin: 20px;
+}
+
+.main-container {
+  margin: 20px;
+}
+
+.add-patient {
+  background: #ccc;
+  height: 200px;
+}
+
+.col {
+  display: flex;
+}
+.col div {
+  flex: 1;
+}
+.col1 {
+  background: red;
+}
+mat-grid-tile {
+  display: flex;
+  background: blue;
+  color: white;
+}
+/* p-table {
+          width: 100%;
+        } */
+
+ng-template {
+  font-weight: normal;
+  background: aliceblue;
+}

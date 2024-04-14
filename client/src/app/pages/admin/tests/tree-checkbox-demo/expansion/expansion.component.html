@@ -1,0 +1,26 @@
+<mat-accordion class="example-headers-align">
+  @for(item of tests(); track item;){
+  <mat-expansion-panel
+    [expanded]="step === $index"
+    (opened)="setStep($index)"
+    hideToggle
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ "Awara-The Groups" }}
+        {{ item.name }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <!-- for the childern -->
+    @for(test of item.tests; track test){
+    <mat-checkbox
+      [(ngModel)]="test.selected"
+      (ngModelChange)="updateAllComplete(test, item)"
+    >
+      {{ test.name }} ({{ test.price }})
+    </mat-checkbox>
+    }
+  </mat-expansion-panel>
+  }
+</mat-accordion>

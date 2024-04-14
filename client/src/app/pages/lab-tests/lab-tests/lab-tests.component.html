@@ -1,0 +1,42 @@
+<!-- <p>lab-tests works!</p> -->
+<mat-accordion class="example-headers-align" multi>
+  @for(item of tests()|keyvalue; track item;){
+
+  <mat-expansion-panel [expanded]="step === $index" (opened)="setStep($index)">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ item.key }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    @for(test of item.value; track test){
+    <mat-checkbox
+      [(ngModel)]="test.selected"
+      (ngModelChange)="updateAllComplete(test, item.value)"
+    >
+      {{ test.name }} ({{ test.publicCost }})
+    </mat-checkbox>
+    }
+  </mat-expansion-panel>
+
+  <!-- <mat-expansion-panel
+            [expanded]="step === $index"
+            (opened)="setStep($index)"
+            hideToggle
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ item.name }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for(test of item.tests; track test){
+            <mat-checkbox
+              [(ngModel)]="test.selected"
+              (ngModelChange)="updateAllComplete(test, item)"
+            >
+              {{ test.name }} ({{ test.price }})
+            </mat-checkbox>
+            }
+          </mat-expansion-panel> -->
+  }
+</mat-accordion>

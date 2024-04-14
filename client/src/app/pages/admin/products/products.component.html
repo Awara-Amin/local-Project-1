@@ -1,0 +1,161 @@
+<div class="row">
+  <div [ngClass]="isSidePanelVisible ? 'col-8' : 'col-12'">
+    <div class="card">
+      <!-- card header -->
+      <div class="card-header bg-primary">
+        <div class="row">
+          <div class="col-6">Product List</div>
+          <div class="col-6 text-end">
+            <!-- make this part dynamic by this click -->
+            <button class="btn btn-sm btn-success" (click)="openSidePanel()">
+              New
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- card body -->
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3 pt-2" *ngFor="let book of bookList">
+            {{ console.log("-", bookList) }}
+            <div class="card">
+              <img
+                class="card-img-top"
+                style="height: 12.125rem !important"
+                [src]="book.productImageUrl"
+                alt="Card image"
+                style="height: 12.125rem !important"
+                alt="Card image"
+              />
+              <div class="card-body">
+                <h4 class="card-title">{{ book.title }}</h4>
+                <p class="card-text">{{ book.author }}</p>
+                <a class="btn btn-primary" (click)="onEdit(book)">Edit</a>
+                <a class="btn btn-danger mx-2" (click)="onDelete(book)"
+                  >Delete</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+    </div>
+  </div>
+  <!--  isSidePanelVisible we have this variable inside .ts -->
+  <div class="col-4" *ngIf="isSidePanelVisible">
+    <div class="card">
+      <div class="card-header bg-primary">
+        <div class="row">
+          <div class="col-6">New Product kaka</div>
+          <div class="col-6 text-end">
+            <button class="btn btn-sm btn-success" (click)="closeSidePanel()">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- card body -->
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6">
+            <label for="">Title</label>
+            <input
+              type="text"
+              [(ngModel)]="bookObj.title"
+              class="form-control"
+            />
+          </div>
+          <div class="col-6">
+            <label for="">Description</label>
+            <input
+              type="text"
+              [(ngModel)]="bookObj.description"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <label for="">Author</label>
+            <input
+              type="text"
+              [(ngModel)]="bookObj.author"
+              class="form-control"
+            />
+          </div>
+          <div class="col-6">
+            <label for="">Price</label>
+            <input
+              type="text"
+              [(ngModel)]="bookObj.price"
+              class="form-control"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="">Category</label>
+            <select [(ngModel)]="bookObj.categoryId" class="form-select">
+              <!-- <option *ngFor="let cate of categoryList" [value]="cate.categoryId"> {{cate.categoryName}}</option> -->
+              <option *ngFor="let cate of categoryList" [value]="cate._id">
+                {{ cate.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <!-- <div class="row">
+          <div class="col-6">
+            <label for="">Category</label>
+            <select class="form-select">
+              <option>
+              </option>
+            </select>
+          </div>
+          <div class="col-6">
+            <label for="">Delivery Time Span</label>
+            <input
+              type="text"
+              [(ngModel)]="productObj.deliveryTimeSpan"
+              class="form-control"
+            />
+          </div>
+        </div> -->
+        <!-- <div class="row">
+          <div class="col-12">
+            <label for="">Image Url</label>
+            <input type="text" class="form-control" />
+          </div>
+        </div> -->
+        <!-- <div class="row">
+          <div class="col-12">
+            <label for="">Product Description</label>
+            <textarea rows="4" class="form-control"></textarea>
+          </div>
+        </div> -->
+        <!--  -->
+        <!-- the buttons -->
+        <div class="row pt-2">
+          <div class="col-6 text-center">
+            <button class="btn btn-success">Reset</button>
+          </div>
+          <div class="col-6 text-center">
+            <button
+              class="btn btn-success"
+              *ngIf="bookObj.bookId == 0"
+              (click)="onSave()"
+            >
+              Create Product
+            </button>
+
+            <button
+              class="btn btn-primary"
+              *ngIf="bookObj.bookId !== 0"
+              (click)="onUpdate(bookObj)"
+            >
+              Update Product
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

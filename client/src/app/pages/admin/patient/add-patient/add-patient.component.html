@@ -1,0 +1,166 @@
+<!-- <p>add-patient works!</p> -->
+<!-- <p>add-doctor works!</p> -->
+<h2 mat-dialog-title>{{ title }}</h2>
+
+<mat-dialog-content [formGroup]="form">
+  <mat-grid-list cols="2">
+    <mat-grid-tile>
+      <div>
+        <mat-form-field>
+          <mat-label>Full name</mat-label>
+          <input
+            matInput
+            placeholder="add your title kaka"
+            formControlName="name"
+            required
+          />
+          <!-- <mat-error
+            *ngIf="
+              form.get(name)?.invalid ||
+              form.get(name)?.dirty ||
+              form.get(name)?.touched
+            "
+            >Enter Full name!</mat-error
+          > -->
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>phoneNo</mat-label>
+          <input
+            matInput
+            placeholder="add your phoneNo."
+            formControlName="phoneNo"
+            required
+          />
+          <!-- <mat-error
+            *ngIf="
+              form.get(phoneNo)?.invalid ||
+              form.get(phoneNo)?.dirty ||
+              form.get(phoneNo)?.touched
+            "
+            >Enter Full phoneNo!</mat-error
+          > -->
+        </mat-form-field>
+
+        <!--  -->
+        <!-- <mat-form-field>
+          <mat-label>Gender</mat-label>
+          <input
+            matInput
+            placeholder="add your gender"
+            formControlName="gender"
+            required
+          />
+          <mat-error
+            *ngIf="
+              form.get(gender)?.invalid ||
+              form.get(gender)?.dirty ||
+              form.get(gender)?.touched
+            "
+            >Enter Full gender!</mat-error
+          >
+        </mat-form-field> -->
+
+        <!--  -->
+
+        <mat-form-field>
+          <mat-label>Age</mat-label>
+          <input
+            matInput
+            placeholder="add your age"
+            formControlName="age"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input
+            matInput
+            placeholder="add your address"
+            formControlName="address"
+            required
+          />
+          <!-- <mat-error
+            *ngIf="
+              form.get(address)?.invalid ||
+              form.get(address)?.dirty ||
+              form.get(address)?.touched
+            "
+            >Enter Full address!</mat-error
+          > -->
+        </mat-form-field>
+
+        <!-- <mat-form-field>
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="categoryId" name="categoryId">
+            <mat-option *ngFor="let cate of categoryList" [value]="cate._id">
+              {{ cate.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field> -->
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div>
+        <mat-label>Gender :</mat-label>
+        <br />
+        <mat-radio-group
+          aria-label="Select a gender"
+          color="primary"
+          formControlName="gender"
+        >
+          <mat-radio-button value="male">Male</mat-radio-button>
+          <mat-radio-button value="female">Female</mat-radio-button>
+          <mat-radio-button value="other">Other</mat-radio-button>
+        </mat-radio-group>
+
+        <mat-form-field>
+          <mat-label>Doctor</mat-label>
+          <mat-select formControlName="doctor_id" name="doctor_id">
+            <mat-option
+              *ngFor="let doctor of allDoctors"
+              [value]="doctor.doctor_id"
+              >{{ doctor.doctor_name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <!-- 
+        <mat-form-field>
+          <mat-label>Birthday Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="birthdate"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field> -->
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-dialog-content>
+
+<!--  -->
+
+<mat-dialog-content> Would you like to delete cat.jpeg ::? </mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close (click)="cancelRegistration()">
+    Cancel
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    mat-dialog-close
+    cdkFocusInitial
+    (click)="registerPatient()"
+    [disabled]="form.invalid"
+  >
+    {{ buttonName }}
+  </button>
+</mat-dialog-actions>

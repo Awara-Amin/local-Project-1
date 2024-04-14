@@ -1,0 +1,29 @@
+<!-- <p-treeSelect
+  class="w-full"
+  placeholder="Selecet Test"
+  [(ngModel)]="selectedOption"
+  [options]="treeOptions"
+  selectionMode="checkbox"
+  [metaKeySelection]="false"
+  (ngModelChange)="showChnages($event)"
+>
+</p-treeSelect> -->
+
+
+<!-- <angular-tree/> -->
+<button mat-raised-button color="primary" class="submit-button"(click)="submit()">Submit</button>
+<div class="main-container">
+<app-expansion [(tests)]="tests"></app-expansion>
+  <div class="selected-tests">
+  <h3>Selected Tests</h3>
+ @if(testsToSubmit().length > 0){
+
+    @for(test of testsToSubmit();track test){
+        <div class="item">{{test.name}}-( {{test.price}})</div>
+    }
+ 
+    
+} 
+</div>
+</div>
+

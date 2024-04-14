@@ -1,0 +1,13 @@
+.mat-icon {
+  margin-right: 15px;
+  padding: auto;
+}
+mat-list-item {
+  color: #3f515b;
+}
+
+.active {
+  background-color: #3f515b !important;
+  color: white !important;
+  border-radius: 5px;
+}

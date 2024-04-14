@@ -1,0 +1,106 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <span class="mat-icon fa-stack fa-lg">
+      <button class="mat-icon" mat-mini-fab>
+        <i class="fas fa-bars fa-inverse"></i>
+      </button>
+    </span>
+    <a class="navbar-brand" href="#">Private Hospital</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarText"
+      aria-controls="navbarText"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+      <span class="navbar-text">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <!-- Please know that >>>  href="#"  === routerLink -->
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/categories"
+              >Category</a
+            >
+          </li>
+          <!--  -->
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle fw-semibold text-uppercase me-1"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Categories2
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li
+                *ngFor="let category of categoryList"
+                class="position-relative"
+              >
+                <a
+                  class="dropdown-item hand"
+                  (click)="navigateToProducts(category._id)"
+                >
+                  <!-- {{ category.categoryName }} -->
+                  {{ category.name }}
+                </a>
+                <!-- Nested dropdown for subcategories -->
+                <!-- <ul class="dropdown-menu sub-menu" *ngIf="category.subcategories && category.subcategories.length > 0">
+                  <li *ngFor="let subcategory of category.subcategories"
+                    (click)="navigateToProducts(subcategory.categoryId)">
+                    <a class="dropdown-item hand" routerLinkActive="router-link-active">{{ subcategory.categoryName
+                      }}</a>
+                  </li>
+                </ul> -->
+              </li>
+            </ul>
+          </li>
+          <!--  -->
+          <li class="nav-item">
+            <!-- Please know that >>>  href="#"  === routerLink -->
+            <a class="nav-link active" aria-current="page">Category Lis</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            @if (this.isAuthenticated$| async) {
+            <div class="dropdown">
+              <span
+                class="dropdown-toggle"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                style="cursor: pointer"
+              ></span>
+              <!-- <button class=" dropdown-toggle" type="button"   aria-expanded="false">
+                  Dropdown button
+                </button> -->
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <div class="nav-item nav-link" (click)="onLogout()">
+                  <span style="cursor: pointer">Logout</span>
+                </div>
+              </ul>
+            </div>
+
+            }@else {
+            <!-- <a class="nav-link" href="#">Login</a> -->
+            <a class="nav-link" routerLink="login">Login</a>
+            }
+          </li>
+        </ul>
+      </span>
+    </div>
+  </div>
+</nav>

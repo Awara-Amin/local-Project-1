@@ -1,0 +1,106 @@
+<div class="parent">
+  <div class="container">
+    <div class="login-box">
+      <div>
+        <h1 class="">Hospital management</h1>
+      </div>
+      <h2>Registration</h2>
+      <form
+        action=""
+        [formGroup]="registerForm"
+        (ngSubmit)="onSubmit()"
+        autocomplete="off"
+        novalidate
+      >
+        <div class="input-box">
+          <input
+            type="name"
+            class="form-control"
+            formControlName="name"
+            required
+            [class]="{
+              invalid:
+                registerForm.get('name')?.hasError('required') &&
+                registerForm.get('name')?.touched,
+              valid: registerForm.get('name')?.valid
+            }"
+          />
+
+          <label>Name</label>
+          @if (registerForm.get('name')?.hasError('required') &&
+          registerForm.get('name')?.touched) {
+          <span class="input-alert">Name Address is required.</span>
+          }
+        </div>
+
+        <div class="input-box">
+          <input
+            type="email"
+            class="form-control"
+            formControlName="email"
+            required
+            [class]="{
+              invalid:
+                registerForm.get('email')?.hasError('required') &&
+                registerForm.get('email')?.touched,
+              valid: registerForm.get('email')?.valid
+            }"
+          />
+
+          <label>Email</label>
+          @if (registerForm.get('email')?.hasError('required') &&
+          registerForm.get('email')?.touched) {
+          <span class="input-alert">Email Address is required.</span>
+          }
+        </div>
+
+        <div class="input-box">
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            [class]="{
+              invalid:
+                registerForm.get('password')?.hasError('required') &&
+                registerForm.get('password')?.touched,
+              valid: registerForm.get('password')?.valid
+            }"
+            required
+          />
+          <label>Password</label>
+          @if (registerForm.get('password')?.hasError('required') &&
+          registerForm.get('password')?.touched) {
+          <span class="input-alert">Password is required.</span>
+          }
+        </div>
+        <!-- confirm -->
+        <!-- <div class="input-box">
+          <input
+            type="confirmPassword"
+            class="form-control"
+            formControlName="confirmPassword"
+            [class]="{
+              invalid:
+                registerForm.get('confirmPassword')?.hasError('required') &&
+                registerForm.get('confirmPassword')?.touched,
+              valid: registerForm.get('confirmPassword')?.valid
+            }"
+            required
+          />
+          <label>Confirm Password</label>
+          @if (registerForm.get('confirmPassword')?.hasError('required') &&
+          registerForm.get('confirmPassword')?.touched) {
+          <span class="input-alert">confirmPassword is required.</span>
+          }
+        </div> -->
+
+        <button class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div>
+      @if(isLoading){
+      <app-spinner></app-spinner>
+      }
+    </div>
+  </div>
+</div>
